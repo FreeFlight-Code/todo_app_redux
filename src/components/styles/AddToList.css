@@ -1,0 +1,12 @@
+#addInput{
+    height:50px;
+    font-size: 38px;
+    max-width: 90%;
+    margin: 0 5% 20px;
+}
+
+#AddToListContainer button{
+    height:50px;
+    margin-left: 43%;
+    margin-bottom: 20px;
+}

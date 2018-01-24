@@ -1,0 +1,22 @@
+#EditItemContainer{
+    position: absolute;
+    padding: 10px;
+    left: 20vw;
+    min-width: 58vw;
+    background-color: rgba(49, 49, 49, 0.788);
+    z-index: 50;
+    font-size: 1.3em;
+}
+
+#EditItemContainer input{font-size: 1.1em;}
+
+#close {
+    background-color: rgb(170, 213, 250);
+    color: rgb(0, 0, 0);
+    font-size: 1em;
+    position: absolute;
+    right: 10px;
+}
+#EditItemContainer>label{
+    margin:6px;
+}
