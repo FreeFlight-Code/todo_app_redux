@@ -3,13 +3,16 @@
     background-color: rgba(2, 0, 145, 0.486);
     position: relative;
     font-size: 30px;
+    padding: 8px;
+    border-top: 1px solid rgba(0, 0, 255, 0.356);
+    border-bottom: 1px solid rgba(0, 0, 255, 0.356);
 }
 
 .listItem input[type=checkbox]{
     transform: scale(2.2);
     position: absolute;
-    right: 50px;
-    top: 9px;
+    right: 54px;
+    top: 15px;
 }
 
 .listItem:hover{
@@ -20,7 +23,7 @@
     color: rgb(3, 3, 128);
     position: absolute;
     right:20px;
-    top:0px;
+    top:8px;
     z-index: 10;
 }
 .hidden{

@@ -20,7 +20,7 @@ function reducer(state, action) {
     case UPDATE_FOCUSEDITEM:
     let newTodoList = [...state.todoList]
     let newFocusedItem = {...state.focusedItem};
-    let title = state.focusedItem.title;
+    // let title = state.focusedItem.title;
     let id = state.focusedItem.id;
     console.log(newFocusedItem)
       return {
@@ -29,11 +29,11 @@ function reducer(state, action) {
 
     case UPDATE_TITLE:
       let newTitle = state.todoList[id].title;
-      
+
       return {
         title: newTitle
       }
-      return state;
+
     case UPDATE_DESCRIPTION:
       // const id = state.focusedItem;
       // const description = action.payload;
