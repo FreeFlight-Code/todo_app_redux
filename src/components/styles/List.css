@@ -5,6 +5,13 @@
     font-size: 30px;
 }
 
+.listItem input[type=checkbox]{
+    transform: scale(2.2);
+    position: absolute;
+    right: 50px;
+    top: 9px;
+}
+
 .listItem:hover{
     background-color: rgb(152, 183, 248)
 }

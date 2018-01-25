@@ -26,7 +26,7 @@ class AddToList extends Component {
     render() {
         return (
             <div id='AddToListContainer'>
-                <input type="search" name="Add Todo Item" id="addInput"></input>
+                <input placeholder='add new item' type="search" name="Add Todo Item" id="addInput"></input>
                 <button onClick={e => { this.addItem(document.querySelector('#addInput').value) }}>ADD</button>
             </div>
         );

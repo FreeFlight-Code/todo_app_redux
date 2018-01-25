@@ -1,12 +1,14 @@
 #addInput{
     height:50px;
+    width: 90%;
     font-size: 38px;
-    max-width: 90%;
+    /* max-width: 90%; */
     margin: 0 5% 20px;
 }
 
 #AddToListContainer button{
     height:50px;
-    margin-left: 43%;
+    width: 50%;
+    margin-left: 25%;
     margin-bottom: 20px;
 }
