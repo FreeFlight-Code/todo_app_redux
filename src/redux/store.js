@@ -1,8 +1,9 @@
 import { createStore } from "redux";
 
 const initialState = {
-    todoList: [{"id":0,"title":"Take out the trash.","description":"Take out the trash before mom kills me","completed":false},{"id":1,"title":"Complete English homework.","description":"Bleh.. I hate English.","completed":true},{"id":4,"title":"Hello World","description":"This is a test","completed":true},{"id":5,"title":"Kill the Demegorgon","description":"Save Hawkins","completed":false},{"id":"11","title":"","description":"testing","completed":true},{"id":13,"title":"","description":"","completed":true},{"id":14,"title":"","description":"","completed":true},{"id":15,"title":"","description":"","completed":true},{"id":16,"title":"","description":"","completed":false}
-  ]
+    todoList: [{"id":0,"title":"Take out the trash.","description":"Take out the trash before mom kills me","completed":false},{"id":1,"title":"Complete English homework.","description":"Bleh.. I hate English.","completed":true},{"id":4,"title":"Hello World","description":"This is a test","completed":true},{"id":5,"title":"Kill the Demegorgon","description":"Save Hawkins","completed":false}
+  ],
+  focusedItem: {"id":1,"title":"Complete English homework.","description":"Bleh.. I hate English.","completed":true}
 };
 
 const ADD_ITEM = 'ADD_ITEM';
@@ -10,33 +11,48 @@ const REMOVE_ITEM = 'REMOVE_ITEM';
 const COMPLETE_ITEM = 'COMPLETE_ITEM';
 const UPDATE_TITLE = 'UPDATE_TITLE';
 const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
+const UPDATE_FOCUSEDITEM = 'UPDATE_FOCUSEDITEM';
 
 
 function reducer(state, action) {
   switch(action.type){
-    case UPDATE_TITLE:
-      const id = action.id;
-      const title = action.payload;
-      const newTitle = [...state.todoList[id].title, title]
 
+    case UPDATE_FOCUSEDITEM:
+    let newTodoList = [...state.todoList]
+    let newFocusedItem = {...state.focusedItem};
+    let title = state.focusedItem.title;
+    let id = state.focusedItem.id;
+    console.log(newFocusedItem)
+      return {
+        focusedItem: newFocusedItem
+      }
+
+    case UPDATE_TITLE:
+      let newTitle = state.todoList[id].title;
+      
       return {
         title: newTitle
       }
-
+      return state;
     case UPDATE_DESCRIPTION:
-      // const id = action.id;
+      // const id = state.focusedItem;
       // const description = action.payload;
-      const newDescription = [...state.todoList[id].description, action.payload]
-
-      return {
-        description: newDescription
-      }
+      // const newDescription = [...state.todoList[id].description, action.payload]
+      return state;
+      // return {
+        // description: newDescription
+        
+      // }
 
     case ADD_ITEM:
     //   var newState = {};
-      let newItem = action.payload;
-      let newTodoList = [...state.todoList];
-      newTodoList = newTodoList.unshift(newItem);
+      let newItem = {
+        title:action.payload,
+        description:"",
+        completed:false
+      };
+      newTodoList = [...state.todoList, newItem];
+      // newTodoList = newTodoList.unshift(newItem);
 
       return {
         todoList: newTodoList

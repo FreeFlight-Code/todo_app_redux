@@ -28,8 +28,13 @@ class List extends Component {
 
     handleDblClick(i) {
         let id = document.querySelector('#listItem' + i);
-        console.log(id)
-        this.showDetails()
+        console.log(id);
+        console.log(this.props)
+        this.props.dispatch({
+            type: 'UPDATE_FOCUSEDITEM',
+            payload: i
+        })
+        this.showDetails();
     }
 
     removeItem(i) {
@@ -39,26 +44,30 @@ class List extends Component {
         })
     }
 
-    componentWillMount() {
-        document.querySelectorAll('#listItem', function(){
-            console.log('hi')
-        });  
-        // document.querySelectorAll('#listItem').classList.add('complete');  
-    }
+//checks if item is completed and adds completed class for css styling *** possible bug, class does not move with item it stays in original array position when items are deleted above it...
+    componentDidMount() {
+        let list = document.querySelectorAll('.listItem')
+        // console.log(list);
+        list.forEach((e)=>{
+            if(e.children[0].checked){
+                e.classList.toggle('complete');
+            }
+        })
+    };
 
     render() {
         
         
 
-        console.log("props", this.props)
-        console.log("todoList", this.props.todoList)
+        // console.log("props", this.props)
+        // console.log("todoList", this.props.todoList)
         let todoList = this.props.todoList;
         const myList = () => {
             if (!this.props.todoList) {
                 return <h1>No Tasks</h1>
             } else {
                 return todoList.map((e, i) => {
-                    console.log(e.title);
+                    // console.log(e.title);
                     return (
                         <div onDoubleClick={() => { this.handleDblClick(i) }} key={i} id={"listItem" + i} className="listItem">{e.title}
                             <input checked={e.completed} onChange={()=>{this.toggleComplete(i)}} type='checkbox'></input>
