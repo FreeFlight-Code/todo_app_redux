@@ -16,7 +16,7 @@ class List extends Component {
     toggleComplete(index) {
         this.props.dispatch({
             type:'COMPLETE_ITEM',
-            payload:""
+            payload: index
         })
         document.querySelector('#listItem' + index).classList.toggle('complete');
 
@@ -39,19 +39,29 @@ class List extends Component {
         })
     }
 
+    componentWillMount() {
+        document.querySelectorAll('#listItem', function(){
+            console.log('hi')
+        });  
+        // document.querySelectorAll('#listItem').classList.add('complete');  
+    }
+
     render() {
-        console.log(this.state, 'state')
-        console.log(this.props, 'props')
+        
+        
+
+        console.log("props", this.props)
+        console.log("todoList", this.props.todoList)
         let todoList = this.props.todoList;
         const myList = () => {
             if (!this.props.todoList) {
-                return <h1>None</h1>
+                return <h1>No Tasks</h1>
             } else {
                 return todoList.map((e, i) => {
                     console.log(e.title);
                     return (
                         <div onDoubleClick={() => { this.handleDblClick(i) }} key={i} id={"listItem" + i} className="listItem">{e.title}
-                            <input checked={e.complete} onChange={()=>{this.toggleComplete(i)}} type='checkbox'></input>
+                            <input checked={e.completed} onChange={()=>{this.toggleComplete(i)}} type='checkbox'></input>
                             <div onClick={() => { this.removeItem(i) }} className="removeItem">X</div>
                         </div>
                     )

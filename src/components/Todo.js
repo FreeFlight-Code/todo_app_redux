@@ -13,7 +13,7 @@ export class Todo extends Component {
 		// console.log(this.props, 'todo.js props')
 		return(
 			<div id="todoContainer">
-				<h1>{this.props.name}'s TODO LIST</h1>
+				<h1>TODO LIST</h1>
 				< EditItem />
 				<AddToList />
 				<div id='linksContainer'>
