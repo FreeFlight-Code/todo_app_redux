@@ -11,6 +11,12 @@ class List extends Component {
         this.removeItem = this.removeItem.bind(this);
         this.showDetails = this.showDetails.bind(this);
         this.toggleComplete = this.toggleComplete.bind(this);
+        this.resolveClassName = this.resolveClassName.bind(this);
+    }
+
+    resolveClassName(isComplete){
+        //returning string of classnames
+        return isComplete ? "complete listItem" : "listItem";
     }
 
     toggleComplete(index) {
@@ -45,15 +51,15 @@ class List extends Component {
     }
 
 //checks if item is completed and adds completed class for css styling *** possible bug, class does not move with item it stays in original array position when items are deleted above it...
-    componentDidMount() {
-        let list = document.querySelectorAll('.listItem')
-        // console.log(list);
-        list.forEach((e)=>{
-            if(e.children[0].checked){
-                e.classList.toggle('complete');
-            }
-        })
-    };
+    // componentDidMount() {
+    //     let list = document.querySelectorAll('.listItem')
+    //     // console.log(list);
+    //     list.forEach((e)=>{
+    //         if(e.children[0].checked){
+    //             e.classList.toggle('complete');
+    //         }
+    //     })
+    // };
 
     render() {
         
@@ -69,7 +75,7 @@ class List extends Component {
                 return todoList.map((e, i) => {
                     // console.log(e.title);
                     return (
-                        <div onDoubleClick={() => { this.handleDblClick(i) }} key={i} id={"listItem" + i} className="listItem">{e.title}
+                        <div onDoubleClick={this.handleDblClick} key={i} id={"listItem" + i} className={this.resolveClassName(e.completed)}>{e.title}
                             <input checked={e.completed} onChange={()=>{this.toggleComplete(i)}} type='checkbox'></input>
                             <div onClick={() => { this.removeItem(i) }} className="removeItem">X</div>
                         </div>

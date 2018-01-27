@@ -27,10 +27,14 @@ export class Todo extends Component {
 	}
 }
 
-function mapStateToProps( state ) {
-	return {
-		name: state.name
-	}
-}
+// function mapStateToProps( state ) {
+// 	return {
+// 		name: state.name
+// 	}
+// }
 
-export default connect( mapStateToProps )( Todo );
+// export default connect( mapStateToProps )( Todo );
+
+export default connect(  )( Todo );
+
+

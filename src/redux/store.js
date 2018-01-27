@@ -16,17 +16,17 @@ const UPDATE_FOCUSEDITEM = 'UPDATE_FOCUSEDITEM';
 
 function reducer(state, action) {
   switch(action.type){
-
+    
     case UPDATE_FOCUSEDITEM:
-    let newTodoList = [...state.todoList]
-    let newFocusedItem = {...state.focusedItem};
+      let newTodoList = [...state.todoList]
+      let newFocusedItem = {...state.focusedItem};
     // let title = state.focusedItem.title;
     let id = state.focusedItem.id;
     console.log(newFocusedItem)
       return {
         focusedItem: newFocusedItem
       }
-
+    
     case UPDATE_TITLE:
       let newTitle = state.todoList[id].title;
 
@@ -45,7 +45,7 @@ function reducer(state, action) {
       // }
 
     case ADD_ITEM:
-    //   var newState = {};
+    //   action.payload equals title of new Item
       let newItem = {
         title:action.payload,
         description:"",
@@ -60,9 +60,9 @@ function reducer(state, action) {
 
 //100% working
     case REMOVE_ITEM:
-      let targetItem = action.payload;
+      i = action.payload;//index
       newTodoList = [...state.todoList];
-      newTodoList.splice(targetItem, 1);
+      newTodoList.splice(i, 1);
       return {
         todoList: newTodoList
       }
@@ -70,13 +70,14 @@ function reducer(state, action) {
 //not sending to state but css works
       case COMPLETE_ITEM:
       let i = action.payload;
-      let newlistItem = {...state.todoList[i], completed: !(state.todoList[i].completed)};
-      newTodoList = state.todoList.slice();
-      newTodoList[i] = newlistItem;
+      let newlistItem = {...state.todoList[i], completed: !(state.todoList[i].completed)};// create a new item
+      newTodoList = state.todoList.slice();//shallow copy array
+      newTodoList[i] = newlistItem;// replace old item with new item
 
       return {
         
-        todoList: newTodoList
+        todoList: newTodoList,
+        // focusedItem: {...state.focusedItem}
       }
 
     default:
