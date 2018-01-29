@@ -6,32 +6,50 @@ class EditItem extends Component {
     constructor(props) {
         super(props);
         this.state={
-            title:'sample text',
-            description:'sample text'
+            // title: this.props.todoList[this.props.index].title,
+            // description: this.props.todoList[this.props.index].description
         }
         this.toggleHidden = this.toggleHidden.bind(this);
         this.updateItem = this.updateItem.bind(this);
     }
+    
+    
+    componentWillMount() {
+        console.log('props  ', this.props)
+//         let list = this.props.todoList;
+//         let i = this.props.index;
+//         this.setState({
+//             title: list[i].title,
+//             description: list[i].description
+//         })
+    }
+    
 
     updateItem(){
-        this.props.dispatch({
-            type: "UPDATE_TITLE",
-            payload: this.state.title
-        })
-        this.props.dispatch({
-            type: "UPDATE_DESCRIPTION",
-            payload: this.state.description
-        })
+        // console.log(this.props.focusedItem.title, ': title')
         console.log('state: ',this.state )
-    }
+        let index = this.props.index;
+        let title = this.state.title;
+        let description = this.state.description;
 
+        this.props.dispatch({
+            type: "UPDATE_ITEM",
+            payload: {
+                index: index,
+                title: title, 
+                description: description
+            }
+        })
+      
+    }
+    
     toggleHidden(){
         document.querySelector('#EditItemContainer').classList.toggle('hidden');
     }
     
     render() {
-        // console.log(this.props, '  props on edititem')
-        // console.log(this.state, '  state on edititem')
+        console.log(this.props, '  props on edititem')
+        console.log(this.state, '  state on edititem')
         return (
             <div className='hidden' id='EditItemContainer'>
 
@@ -48,7 +66,8 @@ class EditItem extends Component {
 
 function mapStateToProps( state ) {
 	return {
-		todoList: state.todoList
+		todoList: state.todoList,
+		index: state.index
 	}
 }
 

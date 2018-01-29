@@ -33,11 +33,8 @@ class List extends Component {
     }
 
     handleDblClick(i) {
-        let id = document.querySelector('#listItem' + i);
-        console.log(id);
-        console.log(this.props)
         this.props.dispatch({
-            type: 'UPDATE_FOCUSEDITEM',
+            type: 'SET_INDEX',
             payload: i
         })
         this.showDetails();
@@ -50,32 +47,16 @@ class List extends Component {
         })
     }
 
-//checks if item is completed and adds completed class for css styling *** possible bug, class does not move with item it stays in original array position when items are deleted above it...
-    // componentDidMount() {
-    //     let list = document.querySelectorAll('.listItem')
-    //     // console.log(list);
-    //     list.forEach((e)=>{
-    //         if(e.children[0].checked){
-    //             e.classList.toggle('complete');
-    //         }
-    //     })
-    // };
-
     render() {
-        
-        
-
-        // console.log("props", this.props)
-        // console.log("todoList", this.props.todoList)
+        // console.log('props', this.props)
         let todoList = this.props.todoList;
         const myList = () => {
             if (!this.props.todoList) {
                 return <h1>No Tasks</h1>
             } else {
                 return todoList.map((e, i) => {
-                    // console.log(e.title);
                     return (
-                        <div onDoubleClick={this.handleDblClick} key={i} id={"listItem" + i} className={this.resolveClassName(e.completed)}>{e.title}
+                        <div onDoubleClick={_=>{this.handleDblClick(i)}} key={i} id={"listItem" + i} className={this.resolveClassName(e.completed)}>{e.title}
                             <input checked={e.completed} onChange={()=>{this.toggleComplete(i)}} type='checkbox'></input>
                             <div onClick={() => { this.removeItem(i) }} className="removeItem">X</div>
                         </div>
@@ -94,7 +75,8 @@ class List extends Component {
 
 function mapStateToProps(state) {
     return {
-        todoList: state.todoList
+        todoList: state.todoList,
+        // focusedItem: state.focusedItem
     }
 }
 
