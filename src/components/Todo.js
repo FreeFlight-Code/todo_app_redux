@@ -9,11 +9,18 @@ import "./styles/Todo.css";
 
 export class Todo extends Component {
 
+getList(){
+	this.props.dispatch({
+		type: 'FETCH_TODO',
+		promise: fetch('https://practiceapi.devmountain.com/api/tasks/')
+	})
+}	
 	render(){
 		// console.log(this.props, 'todo.js props')
 		return(
 			<div id="todoContainer">
 				<h1>TODO LIST</h1>
+				<button onClick={this.getList.bind(this)} >retrieve list</button>
 				{this.props.editItem ? < EditItem /> : <div></div>}
 				<AddToList />
 				<div id='linksContainer'>

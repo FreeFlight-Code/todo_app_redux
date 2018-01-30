@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
-import { loggerMiddleware, confirmationMiddleware } from './middleware';
+import { loggerMiddleware, confirmationMiddleware, promiseMiddleware } from './middleware';
 
 const initialState = {
   todoList: [{ "id": 0, "title": "Take out the trash.", "description": "Take out the trash before mom kills me", "completed": false }, { "id": 1, "title": "Complete English homework.", "description": "Bleh.. I hate English.", "completed": true }, { "id": 4, "title": "Hello World", "description": "This is a test", "completed": true }, { "id": 5, "title": "Kill the Demegorgon", "description": "Save Hawkins", "completed": false }
@@ -13,12 +13,20 @@ const COMPLETE_ITEM = 'COMPLETE_ITEM';
 const UPDATE_ITEM = 'UPDATE_ITEM';
 const SET_INDEX = 'SET_INDEX';
 const SHOW_EDIT_ITEM = 'SHOW_EDIT_ITEM';
+const FETCH_TODO = 'FETCH_TODO';
 
 
 function reducer(state, action) {
   let newTodoList = [...state.todoList]
 
   switch (action.type) {
+
+    case FETCH_TODO: {
+      newTodoList = action.payload;
+      return {
+        todoList: newTodoList
+      };
+    }
 
     case SHOW_EDIT_ITEM: {
 
@@ -107,5 +115,6 @@ export default createStore(
   initialState, 
   applyMiddleware(
     loggerMiddleware,
-    confirmationMiddleware
+    confirmationMiddleware,
+    promiseMiddleware
   ));
