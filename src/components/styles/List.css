@@ -1,5 +1,6 @@
 .listItem{
     color:rgb(31, 31, 31);
+    min-height: 25px;
     background-color: rgba(2, 0, 145, 0.486);
     position: relative;
     font-size: 30px;
