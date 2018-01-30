@@ -13,9 +13,7 @@ class EditItem extends Component {
     }
     
     handleChange(e){
-        let id = e.target.id
-        // (e.target.id)
-        console.log('e.target',e.target)
+        let id = e.target.id;
         this.setState({
             [id]: e.target.value
         })
@@ -23,15 +21,13 @@ class EditItem extends Component {
 
     updateItem(){
         let title = this.state.title;
-        // let title = document.querySelector('#title').value;
-        // console.log("title: ", document.querySelector('#title').value)
-        
         let description = this.state.description;
         let index = this.props.index;
         
         console.log('title index and description', title, index, description);
         this.props.dispatch({
             type: "UPDATE_ITEM",
+            shouldConfirm: true,
             payload: {
                 index: index,
                 title: title, 

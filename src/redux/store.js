@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
+import { loggerMiddleware, confirmationMiddleware } from './middleware';
 
 const initialState = {
   todoList: [{ "id": 0, "title": "Take out the trash.", "description": "Take out the trash before mom kills me", "completed": false }, { "id": 1, "title": "Complete English homework.", "description": "Bleh.. I hate English.", "completed": true }, { "id": 4, "title": "Hello World", "description": "This is a test", "completed": true }, { "id": 5, "title": "Kill the Demegorgon", "description": "Save Hawkins", "completed": false }
@@ -101,14 +102,10 @@ function reducer(state, action) {
   }
 }
 
-const loggerMiddleware = store => next => action => {
-  console.log('dispatching ', action);
-  next(action);
-}
-
 export default createStore(
   reducer, 
   initialState, 
   applyMiddleware(
-    loggerMiddleware
+    loggerMiddleware,
+    confirmationMiddleware
   ));

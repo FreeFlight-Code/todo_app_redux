@@ -47,6 +47,7 @@ class List extends Component {
 
     removeItem(i) {
         this.props.dispatch({
+            shouldConfirm: true,
             type: 'REMOVE_ITEM',
             payload: i
         })
