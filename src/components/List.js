@@ -29,15 +29,20 @@ class List extends Component {
     }
 
     showDetails() {
-        document.querySelector('#EditItemContainer').classList.toggle('hidden');
+        // document.querySelector('#EditItemContainer').classList.toggle('hidden');
     }
 
     handleDblClick(i) {
         this.props.dispatch({
+            type: 'SHOW_EDIT_ITEM',
+            payload: true
+        })
+        this.props.dispatch({
             type: 'SET_INDEX',
             payload: i
         })
-        this.showDetails();
+        // this.showDetails();
+
     }
 
     removeItem(i) {
@@ -75,8 +80,9 @@ class List extends Component {
 
 function mapStateToProps(state) {
     return {
+        // editItem: state.editItem,
         todoList: state.todoList,
-        // focusedItem: state.focusedItem
+        // index: state.index
     }
 }
 

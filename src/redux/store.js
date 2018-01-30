@@ -2,7 +2,8 @@ import { createStore } from "redux";
 
 const initialState = {
   todoList: [{ "id": 0, "title": "Take out the trash.", "description": "Take out the trash before mom kills me", "completed": false }, { "id": 1, "title": "Complete English homework.", "description": "Bleh.. I hate English.", "completed": true }, { "id": 4, "title": "Hello World", "description": "This is a test", "completed": true }, { "id": 5, "title": "Kill the Demegorgon", "description": "Save Hawkins", "completed": false }
-  ]
+  ],
+  editItem: false
 };
 
 const ADD_ITEM = 'ADD_ITEM';
@@ -10,33 +11,45 @@ const REMOVE_ITEM = 'REMOVE_ITEM';
 const COMPLETE_ITEM = 'COMPLETE_ITEM';
 const UPDATE_ITEM = 'UPDATE_ITEM';
 const SET_INDEX = 'SET_INDEX';
-// const UPDATE_TITLE = 'UPDATE_TITLE';
-// const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
-// const UPDATE_FOCUSEDITEM = 'UPDATE_FOCUSEDITEM';
+const SHOW_EDIT_ITEM = 'SHOW_EDIT_ITEM';
 
 
 function reducer(state, action) {
   let newTodoList = [...state.todoList]
-  // let newFocusedItem = {...state.focusedItem};
+
   switch (action.type) {
+
+    case SHOW_EDIT_ITEM: {
+
+      return {
+        todoList: newTodoList,
+        editItem: action.payload,
+        index: state.index
+      }
+    }
+
     case SET_INDEX: {
       let index = action.payload;
       return {
         todoList: newTodoList,
-        index: index
+        index: index,
+        editItem: state.editItem
       }
     }
 
     case UPDATE_ITEM: {
       //send index, title, description
-      let index = action.index;
-      let newTitle = action.title;
-      let newDescription = action.description;
+      console.log(action)
+      let index = action.payload.index;
+      let newTitle = action.payload.title;
+      let newDescription = action.payload.description;
       let newItem = {...newTodoList[index], title: newTitle, description: newDescription };
       newTodoList[index] = newItem;
 
       return{
-        todoList: newTodoList
+        todoList: newTodoList,
+        index: state.index,
+        editItem: state.editItem
       }
     }
  
@@ -48,11 +61,11 @@ function reducer(state, action) {
         completed: false
       };
       newTodoList = [...state.todoList, newItem];
-      // newTodoList = newTodoList.unshift(newItem);
 
       return {
         todoList: newTodoList,
-        // focusedItem: {1:1}
+        index: state.index,
+        editItem: state.editItem
       }
     }
 
@@ -63,8 +76,10 @@ function reducer(state, action) {
       newTodoList.splice(i, 1);
       return {
         todoList: newTodoList,
-        // focusedItem: {2:2}
+        index: state.index,
+        editItem: state.editItem
       }
+    
     }
     //not sending to state but css works
     case COMPLETE_ITEM: {
@@ -75,12 +90,13 @@ function reducer(state, action) {
 
       return {
         todoList: newTodoList,
-        // focusedItem: {3:3}
+        index: state.index,
+        editItem: state.editItem
       }
     }
+
     default:
       return state;
-
 
   }
 }

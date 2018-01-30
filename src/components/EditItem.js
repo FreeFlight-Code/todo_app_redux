@@ -2,36 +2,34 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './styles/EditItem.css';
 
+
 class EditItem extends Component {
     constructor(props) {
         super(props);
-        this.state={
-            // title: this.props.todoList[this.props.index].title,
-            // description: this.props.todoList[this.props.index].description
-        }
-        this.toggleHidden = this.toggleHidden.bind(this);
-        this.updateItem = this.updateItem.bind(this);
+            this.state={
+                title: this.props.todoList[this.props.index].title,
+                description: this.props.todoList[this.props.index].description
+            }
     }
     
-    
-    componentWillMount() {
-        console.log('props  ', this.props)
-//         let list = this.props.todoList;
-//         let i = this.props.index;
-//         this.setState({
-//             title: list[i].title,
-//             description: list[i].description
-//         })
+    handleChange(e){
+        let id = e.target.id
+        // (e.target.id)
+        console.log('e.target',e.target)
+        this.setState({
+            [id]: e.target.value
+        })
     }
-    
 
     updateItem(){
-        // console.log(this.props.focusedItem.title, ': title')
-        console.log('state: ',this.state )
-        let index = this.props.index;
         let title = this.state.title;
+        // let title = document.querySelector('#title').value;
+        // console.log("title: ", document.querySelector('#title').value)
+        
         let description = this.state.description;
-
+        let index = this.props.index;
+        
+        console.log('title index and description', title, index, description);
         this.props.dispatch({
             type: "UPDATE_ITEM",
             payload: {
@@ -40,25 +38,41 @@ class EditItem extends Component {
                 description: description
             }
         })
-      
+        this.props.dispatch({
+            type: 'SHOW_EDIT_ITEM',
+            payload: false
+        })
     }
     
+    //changes state and shows edititem component
     toggleHidden(){
-        document.querySelector('#EditItemContainer').classList.toggle('hidden');
+        this.props.dispatch({
+            type: 'SHOW_EDIT_ITEM',
+            payload: false
+        })
     }
     
     render() {
-        console.log(this.props, '  props on edititem')
-        console.log(this.state, '  state on edititem')
+        // console.log(this.state)
         return (
-            <div className='hidden' id='EditItemContainer'>
+            <div id='EditItemContainer'>
 
-                <span onClick={()=>{this.toggleHidden()}} id='close'>X</span>
+                <span onClick={this.toggleHidden.bind(this)} id='close'>X</span>
                 <label>Title</label>
-                <input onChange={e=>this.setState({title:e.target.value})} id='title' value={this.state.title} type='text'></input>
+                <input 
+                    id='title' 
+                    onChange={e=>{this.handleChange(e)}}
+                    value={this.state.title}
+                    type='text'
+                ></input>
                 <label>Description</label>
-                <input onChange={e=>this.setState({description:e.target.value})} id='description' value={this.state.description} type='textfield'></input>
-                <button onClick={e=>{this.updateItem()}}>SAVE</button>
+                <input 
+                    id='description' 
+                    onChange={e=>{this.handleChange(e)}}
+                    value={this.state.description}  
+                    type='textfield'
+                ></input>
+                <button onClick={this.updateItem.bind(this)}>SAVE</button>
             </div>
         );
     }
@@ -67,7 +81,8 @@ class EditItem extends Component {
 function mapStateToProps( state ) {
 	return {
 		todoList: state.todoList,
-		index: state.index
+        index: state.index,
+        editItem: state.editItem
 	}
 }
 

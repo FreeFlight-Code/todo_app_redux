@@ -14,7 +14,7 @@ export class Todo extends Component {
 		return(
 			<div id="todoContainer">
 				<h1>TODO LIST</h1>
-				< EditItem />
+				{this.props.editItem ? < EditItem /> : <div></div>}
 				<AddToList />
 				<div id='linksContainer'>
 					<span className="links">All Tasks</span>
@@ -27,14 +27,16 @@ export class Todo extends Component {
 	}
 }
 
-// function mapStateToProps( state ) {
-// 	return {
-// 		name: state.name
-// 	}
-// }
+function mapStateToProps( state ) {
+	return {
+		todoList: state.todoList,
+		index: state.index,
+		editItem: state.editItem
+	}
+}
 
-// export default connect( mapStateToProps )( Todo );
+export default connect( mapStateToProps )( Todo );
 
-export default connect(  )( Todo );
+// export default connect(  )( Todo );
 
 
