@@ -20,7 +20,7 @@ getList(){
 		return(
 			<div id="todoContainer">
 				<h1>TODO LIST</h1>
-				<button onClick={this.getList.bind(this)} >retrieve list</button>
+				<button id='retrieveButton' onClick={this.getList.bind(this)} >retrieve list</button>
 				{this.props.editItem ? < EditItem /> : <div></div>}
 				<AddToList />
 				<div id='linksContainer'>
