@@ -4,14 +4,21 @@ import './styles/EditItem.css';
 
 
 class EditItem extends Component {
-    constructor(props) {
-        super(props);
-            this.state={
-                title: this.props.todoList[this.props.index].title,
-                description: this.props.todoList[this.props.index].description
-            }
+
+//Array Index passed through params, index taken of params and title and description set to state
+    componentWillMount() {
+        let index = this.props.location.pathname.split('/').pop();
+        index = Number(index)
+        this.props.dispatch({
+            type: 'SET_INDEX',
+            payload: index
+        })
+        this.setState({
+            title:this.props.todoList[index].title,
+            description:this.props.todoList[index].description
+        })
     }
-    
+
     //determines if handleChange occurs in title or description field and setsState to its relative field
     handleChange(e){
         let id = e.target.id;
@@ -35,27 +42,18 @@ class EditItem extends Component {
                 description: description
             }
         })
-        //renders editItem component
-        this.props.dispatch({
-            type: 'SHOW_EDIT_ITEM',
-            payload: false
-        })
+        this.props.history.push('/');
     }
     
     //changes state and shows edititem component deprecated after edititem rendered on state change
     toggleHidden(){
-        this.props.dispatch({
-            type: 'SHOW_EDIT_ITEM',
-            payload: false
-        })
+        this.props.history.push('/');
     }
     
     render() {
-        // console.log(this.state)
         return (
             <div id='EditItemContainer'>
-
-                <span onClick={this.toggleHidden.bind(this)} id='close'>X</span>
+                 <span onClick={this.toggleHidden.bind(this)} id='close'>X</span>
                 <label>Title</label>
                 <input 
                     id='title' 
@@ -70,7 +68,7 @@ class EditItem extends Component {
                     value={this.state.description}  
                     type='textfield'
                 ></input>
-                <button onClick={this.updateItem.bind(this)}>SAVE</button>
+                <button onClick={this.updateItem.bind(this)}>SAVE</button> 
             </div>
         );
     }

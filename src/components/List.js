@@ -9,7 +9,6 @@ class List extends Component {
         super(props);
 
         this.removeItem = this.removeItem.bind(this);
-        this.showDetails = this.showDetails.bind(this);
         this.toggleComplete = this.toggleComplete.bind(this);
         this.resolveClassName = this.resolveClassName.bind(this);
     }
@@ -28,19 +27,16 @@ class List extends Component {
 
     }
 
-    showDetails() {
-        // document.querySelector('#EditItemContainer').classList.toggle('hidden');
-    }
-
     handleDblClick(i) {
-        this.props.dispatch({
-            type: 'SHOW_EDIT_ITEM',
-            payload: true
+        // this.props.dispatch({
+        //     type: 'SHOW_EDIT_ITEM',
+        //     payload: true
+        // })
+        this.setState({
+            index: i
         })
-        this.props.dispatch({
-            type: 'SET_INDEX',
-            payload: i
-        })
+    
+        window.location.pathname = '/details/' + i;
         // this.showDetails();
 
     }
