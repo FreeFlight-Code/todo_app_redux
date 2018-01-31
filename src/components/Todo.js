@@ -23,12 +23,13 @@ getList(){
 				<button id='retrieveButton' onClick={this.getList.bind(this)} >retrieve list</button>
 				{this.props.editItem ? < EditItem /> : <div></div>}
 				<AddToList />
-				<div id='linksContainer'>
+				{/* <div id='linksContainer'>
 					<span className="links">All Tasks</span>
 					<span className="links">View Completed</span>
 					<span className="links">View Incomplete</span>
-				</div>
+				</div> */}
 				<List />
+				<p>Double Click to Edit or see Details...</p>
 			</div>
 		)
 	}

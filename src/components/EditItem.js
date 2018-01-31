@@ -54,21 +54,21 @@ class EditItem extends Component {
         return (
             <div id='EditItemContainer'>
                  <span onClick={this.toggleHidden.bind(this)} id='close'>X</span>
-                <label>Title</label>
+                <div><label>Title</label></div>
                 <input 
                     id='title' 
                     onChange={e=>{this.handleChange(e)}}
                     value={this.state.title}
                     type='text'
                 ></input>
-                <label>Description</label>
+                <div><label>Description</label></div>
                 <input 
                     id='description' 
                     onChange={e=>{this.handleChange(e)}}
                     value={this.state.description}  
                     type='textfield'
                 ></input>
-                <button onClick={this.updateItem.bind(this)}>SAVE</button> 
+                <button onClick={this.updateItem.bind(this)}>SAVE CHANGES</button> 
             </div>
         );
     }

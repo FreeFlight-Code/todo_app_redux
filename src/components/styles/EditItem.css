@@ -1,22 +1,43 @@
 #EditItemContainer{
+    height: 70vh;
+    margin-top:10vh;
     position: absolute;
-    padding: 10px;
+    padding: 40px;
     left: 20vw;
-    min-width: 58vw;
-    background-color: rgba(49, 49, 49, 0.788);
+    min-width: 60vw;
+    background: rgb(149,149,149); /* Old browsers */
+    background: -moz-linear-gradient(left, rgba(149,149,149,1) 0%, rgba(13,13,13,1) 46%, rgba(1,1,1,1) 50%, rgba(10,10,10,1) 53%, rgba(78,78,78,1) 76%, rgba(56,56,56,1) 87%, rgba(27,27,27,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(149,149,149,1) 0%,rgba(13,13,13,1) 46%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 53%,rgba(78,78,78,1) 76%,rgba(56,56,56,1) 87%,rgba(27,27,27,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(149,149,149,1) 0%,rgba(13,13,13,1) 46%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 53%,rgba(78,78,78,1) 76%,rgba(56,56,56,1) 87%,rgba(27,27,27,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#1b1b1b',GradientType=1 ); /* IE6-9 */;
     z-index: 50;
     font-size: 1.3em;
+    border-radius: 5px;
+    box-shadow: 10px 10px 50px 0px black;
 }
 
-#EditItemContainer input{font-size: 1.1em;}
+#EditItemContainer input{
+    width: 99%;
+    font-size: 1.1em;
+    margin: 10px 0 30px;
+    border-radius: 5px;
+}
 
 #close {
     background-color: rgb(170, 213, 250);
     color: rgb(0, 0, 0);
     font-size: 1em;
     position: absolute;
+    top: 10px;
     right: 10px;
+    padding: 3px 6px;
+    border-radius: 4px;
 }
-#EditItemContainer>label{
-    margin:6px;
+#EditItemContainer label{
+    margin: 50px;
+    
+}
+
+button{
+    padding: 10px;
 }
