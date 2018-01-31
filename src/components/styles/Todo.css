@@ -5,6 +5,11 @@ body{
     /* text-align: center; */
 }
 
+img{
+    height: 15vw;
+    margin: 0 17vw 50px;
+}
+
 h1{
     text-align: center;
     padding: 30px;

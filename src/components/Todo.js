@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import List from "./List.js";
 import AddToList from "./AddToList.js";
 import EditItem from "./EditItem.js";
+import icon from "../images/icon.png";
 
 
 import "./styles/Todo.css";
@@ -19,10 +20,11 @@ getList(){
 		// console.log(this.props, 'todo.js props')
 		return(
 			<div id="todoContainer">
-				<h1>TODO LIST</h1>
-				<button id='retrieveButton' onClick={this.getList.bind(this)} >retrieve list</button>
+				{/* <h1>TODO LIST</h1> */}
+				<img alt='logo icon' src={icon}></img>
 				{this.props.editItem ? < EditItem /> : <div></div>}
 				<AddToList />
+				<button id='retrieveButton' onClick={this.getList.bind(this)} >retrieve api list</button>
 				{/* <div id='linksContainer'>
 					<span className="links">All Tasks</span>
 					<span className="links">View Completed</span>
