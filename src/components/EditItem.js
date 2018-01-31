@@ -12,35 +12,37 @@ class EditItem extends Component {
             }
     }
     
+    //determines if handleChange occurs in title or description field and setsState to its relative field
     handleChange(e){
         let id = e.target.id;
         this.setState({
             [id]: e.target.value
         })
     }
-
+//Clicking Save button updates state and unmounts editItem
     updateItem(){
         let title = this.state.title;
         let description = this.state.description;
         let index = this.props.index;
         
-        console.log('title index and description', title, index, description);
+        // console.log('title index and description', title, index, description);
         this.props.dispatch({
+            // shouldConfirm: true,
             type: "UPDATE_ITEM",
-            shouldConfirm: true,
             payload: {
                 index: index,
                 title: title, 
                 description: description
             }
         })
+        //renders editItem component
         this.props.dispatch({
             type: 'SHOW_EDIT_ITEM',
             payload: false
         })
     }
     
-    //changes state and shows edititem component
+    //changes state and shows edititem component deprecated after edititem rendered on state change
     toggleHidden(){
         this.props.dispatch({
             type: 'SHOW_EDIT_ITEM',

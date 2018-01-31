@@ -2,7 +2,7 @@ export const loggerMiddleware = store => next => action => {
         console.log('dispatching ', action);
         next(action);
       }
-
+//called in ToDoList line 12
 export const promiseMiddleware = store => next => action => {
         if(action.promise){
             action.promise
