@@ -19,16 +19,11 @@ h1{
 #todoContainer{
     background-color: rgb(142, 197, 252);
     max-width: 50vw;
-<<<<<<< HEAD
     margin: 50px auto 0px;
     padding: 40px;
     border-radius: 15px;
     border: 1px rgba(8, 0, 53, 0.445) solid;
     box-shadow: rgba(4, 0, 41, 0.562) 0px 70px 180px 20px;
-=======
-    margin: 50px auto;
-    padding: 25px;
->>>>>>> master
 }
 
 #linksContainer{
