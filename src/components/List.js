@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './styles/List.css';
-
+import api from './api';
 
 
 class List extends Component {
@@ -19,11 +19,22 @@ class List extends Component {
     }
 
     toggleComplete(index) {
-        this.props.dispatch({
-            type:'COMPLETE_ITEM',
-            payload: index
+        let updatedItem = {...this.props.todoList[index]};
+        updatedItem.completed = !updatedItem.completed;
+
+        api.update(updatedItem)
+        .then((isUpdated)=>{
+            if(isUpdated){
+                this.props.dispatch({
+                    type:'COMPLETE_ITEM',
+                    payload: index
+                })
+            } else {
+                alert('unable to update Item code error code 45601')
+            }
+            // document.querySelector('#listItem' + index).classList.toggle('complete');
         })
-        document.querySelector('#listItem' + index).classList.toggle('complete');
+        
 
     }
 
@@ -42,10 +53,18 @@ class List extends Component {
     }
 
     removeItem(i) {
-        this.props.dispatch({
-            shouldConfirm: true,
-            type: 'REMOVE_ITEM',
-            payload: i
+        let id = this.props.todoList[i].id
+        api.delete(id)
+        .then((isDeleted)=>{
+            if (isDeleted){
+                this.props.dispatch({
+                    shouldConfirm: true,
+                    type: 'REMOVE_ITEM',
+                    payload: i
+                })
+            } else {
+                alert('unable to delete, please check database')
+            }
         })
     }
 

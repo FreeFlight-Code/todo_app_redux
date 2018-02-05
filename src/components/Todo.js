@@ -4,7 +4,7 @@ import List from "./List.js";
 import AddToList from "./AddToList.js";
 import EditItem from "./EditItem.js";
 import icon from "../images/icon.png";
-
+import api from './api.js';
 
 import "./styles/Todo.css";
 
@@ -13,7 +13,7 @@ export class Todo extends Component {
 getList(){
 	this.props.dispatch({
 		type: 'FETCH_TODO',
-		promise: fetch('https://practiceapi.devmountain.com/api/tasks/')
+		promise: api.readAll()
 	})
 }	
 	render(){

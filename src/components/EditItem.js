@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './styles/EditItem.css';
+import api from './api';
 
 
 class EditItem extends Component {
@@ -42,17 +43,32 @@ class EditItem extends Component {
         let description = this.state.description;
         let index = this.props.index;
         let checked = document.querySelector('#editItemCompleted').checked;
+        let newObj = {
+            id: this.state.id,
+            description: this.state.description,
+            completed: this.state.completed,
+            title: this.state.title
+        }
+
         
-        // console.log('title index and description', title, index, description);
-        this.props.dispatch({
-            // shouldConfirm: true,
-            type: "UPDATE_ITEM",
-            index: index,
-            title: title, 
-            description: description,
-            completed: checked
-        })
-        this.props.history.push('/');
+        api.update(newObj)
+        .then((didUpdate)=>{
+            if(didUpdate){
+            // console.log('title index and description', title, index, description);
+            this.props.dispatch({
+                // shouldConfirm: true,
+                type: "UPDATE_ITEM",
+                index: index,
+                title: title, 
+                description: description,
+                completed: checked
+            })
+            this.props.history.push('/');
+        } else {
+            alert('Unable to update Item')
+        }
+    
+    })
     }
     
     //changes state and shows edititem component deprecated after edititem rendered on state change

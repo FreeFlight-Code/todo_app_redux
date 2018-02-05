@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './styles/AddToList.css';
+import api from './api'
 
 class AddToList extends Component {
     constructor(props) {
@@ -9,12 +10,24 @@ class AddToList extends Component {
     }
 
     addItem(val) {
+        let temp = {
+            title:val,
+            completed: false,
+            description:''
+        }
         if (!val) {
             alert('Please input a new task...')
         } else {
+            api.create(temp)
+            .then((newObjId)=>{
+                temp.id = newObjId;
+            })
             this.props.dispatch({
                 type: 'ADD_ITEM',
-                payload: val
+                id: temp.id,
+                description: temp.description,
+                title: temp.title,
+                completed: temp.completed
             })
         }
         document.querySelector("#addInput").value = "";

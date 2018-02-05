@@ -56,6 +56,7 @@ function reducer(state, action) {
       let newItem = {...newTodoList[index], title: newTitle, description: newDescription, completed: newCompleted };
       newTodoList[index] = newItem;
 
+  
       return{
         todoList: newTodoList,
         index: state.index,
@@ -64,11 +65,12 @@ function reducer(state, action) {
     }
  
     case ADD_ITEM: {
-      //   action.payload equals title of new Item
+      //   action.payload equals new Object
       let newItem = {
-        title: action.payload,
-        description: "",
-        completed: false
+        id: action.id,
+        description: action.description,
+        title: action.title,
+        completed: action.completed
       };
       newTodoList = [...state.todoList, newItem];
 
