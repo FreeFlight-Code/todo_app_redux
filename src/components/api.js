@@ -36,7 +36,7 @@ export default class api {
     static delete(id) {
         return new Promise((resolve)=>{
             console.log('api deleted item')
-            resolve(false);
+            resolve(true);
         })
     }
 }
