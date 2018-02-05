@@ -49,10 +49,11 @@ function reducer(state, action) {
     case UPDATE_ITEM: {
       //send index, title, description
       console.log(action)
-      let index = action.payload.index;
-      let newTitle = action.payload.title;
-      let newDescription = action.payload.description;
-      let newItem = {...newTodoList[index], title: newTitle, description: newDescription };
+      let index = action.index;
+      let newTitle = action.title;
+      let newDescription = action.description;
+      let newCompleted = action.completed;
+      let newItem = {...newTodoList[index], title: newTitle, description: newDescription, completed: newCompleted };
       newTodoList[index] = newItem;
 
       return{

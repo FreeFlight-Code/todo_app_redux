@@ -32,9 +32,9 @@ class List extends Component {
         //     type: 'SHOW_EDIT_ITEM',
         //     payload: true
         // })
-        this.setState({
-            index: i
-        })
+        // this.setState({
+        //     index: i
+        // })
     
         window.location.pathname = '/details/' + i;
         // this.showDetails();
