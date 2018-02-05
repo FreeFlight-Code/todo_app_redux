@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 ReactDOM.render(
     <Provider store={ store }>
         <Router>
-            <div>
+            <div id='Fullpage' >
                 <Route exact path="/" component={Todo}/>
                 <Route path="/details" component={EditItem}/>
             </div>

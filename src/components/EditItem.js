@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './styles/EditItem.css';
 import api from './api';
+import icon from "../images/icon.png";
+
 
 
 class EditItem extends Component {
@@ -80,7 +82,9 @@ class EditItem extends Component {
         console.log(this.state)
         return (
             <div id='EditItemContainer'>
+            <h1>Edit</h1>
                  <span onClick={this.closeDetails.bind(this)} id='close'>X</span>
+                 <img alt='logo icon' src={icon}></img>
                 <div><label>Title</label></div>
                 <input 
                     id='title' 
@@ -95,11 +99,12 @@ class EditItem extends Component {
                     value={this.state.description}  
                     type='textfield'
                 ></input>
-                <button onClick={this.updateItem.bind(this)}>SAVE CHANGES</button> 
                 
-                <input id='editItemCompleted' checked={this.state.completed} onChange={(e)=>{this.toggleComplete(e)}} type='checkbox'></input>
-    
-                <div onClick={ this.closeDetails.bind(this) } className="removeItem">Cancel</div>
+                <input id='editItemCompleted' checked={this.state.completed} onChange={(e)=>{this.toggleComplete(e)}} type='checkbox'></input>Completed (Check to Complete)
+                <div id='buttonContainer' >
+                <button onClick={this.updateItem.bind(this)}>SAVE CHANGES</button> 
+                <button onClick={ this.closeDetails.bind(this) }>Cancel</button>
+                </div>
             </div>
         );
     }

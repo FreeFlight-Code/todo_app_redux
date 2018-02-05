@@ -1,6 +1,13 @@
+#Fullpage{
+    background-image: url('https://thumbs.dreamstime.com/b/office-desktop-keyboard-mouse-notebook-pen-markers-pencil-pins-post-notes-view-above-38937661.jpg');
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+}
+
 
 body{
-    background-color: #e6e3e3;
+
     cursor: pointer; 
     /* text-align: center; */
 }
@@ -22,6 +29,7 @@ h1{
 }
 
 #todoContainer{
+    /* opacity: ; */
     background: rgb(208,228,247); /* Old browsers */
     background: -moz-linear-gradient(top, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 24%, rgba(10,119,213,1) 50%, rgba(83,159,225,1) 79%, rgba(135,188,234,1) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top, rgba(208,228,247,1) 0%,rgba(115,177,231,1) 24%,rgba(10,119,213,1) 50%,rgba(83,159,225,1) 79%,rgba(135,188,234,1) 100%); /* Chrome10-25,Safari5.1-6 */

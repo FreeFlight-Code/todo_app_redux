@@ -4,7 +4,7 @@
     position: absolute;
     padding: 40px;
     left: 20vw;
-    min-width: 60vw;
+    min-width: 50vw;
     background: rgb(208,228,247); /* Old browsers */
     background: -moz-linear-gradient(top, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 24%, rgba(10,119,213,1) 50%, rgba(83,159,225,1) 79%, rgba(135,188,234,1) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top, rgba(208,228,247,1) 0%,rgba(115,177,231,1) 24%,rgba(10,119,213,1) 50%,rgba(83,159,225,1) 79%,rgba(135,188,234,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -22,6 +22,12 @@
     font-size: 1.1em;
     margin: 10px 0 30px;
     border-radius: 5px;
+}
+#EditItemContainer h1{
+    margin: 10px
+}
+#EditItemContainer img{
+    /* margin: 0 auto; */
 }
 
 #close {
@@ -42,8 +48,12 @@
 input#editItemCompleted{
     height:40px;
     width:40px;
+    margin-right: 15px;
+    position: relative;
+    bottom: -5px;
 }
 
 button{
     padding: 10px;
+    margin-right: 15px;
 }
