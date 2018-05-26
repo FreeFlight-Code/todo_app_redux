@@ -1,8 +1,10 @@
 #Fullpage{
     background-image: url('https://thumbs.dreamstime.com/b/office-desktop-keyboard-mouse-notebook-pen-markers-pencil-pins-post-notes-view-above-38937661.jpg');
     background-size: cover;
-    height: 100vh;
-    overflow: hidden;
+    /* height: 100vh; */
+    /* overflow: hidden; */
+    background-attachment: fixed;
+    padding: 10vh;
 }
 
 
@@ -14,16 +16,11 @@ body{
 
 img{
     height: 15vw;
-    margin: 0 17vw 50px;
-}
-
-h1{
-    text-align: center;
-    padding: 30px;
+    margin: 0 17vw 2vmin;
 }
 
 #retrieveButton{
-    margin:20px;
+    margin:2vmin;
     background-color: rgb(109, 2, 2);
     color: white;
 }
@@ -35,12 +32,13 @@ h1{
     background: -webkit-linear-gradient(top, rgba(208,228,247,1) 0%,rgba(115,177,231,1) 24%,rgba(10,119,213,1) 50%,rgba(83,159,225,1) 79%,rgba(135,188,234,1) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, rgba(208,228,247,1) 0%,rgba(115,177,231,1) 24%,rgba(10,119,213,1) 50%,rgba(83,159,225,1) 79%,rgba(135,188,234,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0e4f7', endColorstr='#87bcea',GradientType=0 ); /* IE6-9 */
-    max-width: 50vw;
-    margin: 50px auto 0px;
+    max-width: 90vw;
+    margin: 0 auto;
     padding: 40px;
     border-radius: 15px;
     border: 1px rgba(8, 0, 53, 0.445) solid;
     box-shadow: rgba(4, 0, 41, 0.562) 0px 70px 180px 20px;
+    
 }
 
 #linksContainer{
@@ -52,4 +50,10 @@ h1{
 
 .links:hover{
     color:red;
+}
+
+@media  screen and (min-width: 800px){
+    #todoContainer{
+        max-width: 50vw;
+    }
 }

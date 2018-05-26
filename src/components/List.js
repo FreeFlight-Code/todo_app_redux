@@ -47,7 +47,7 @@ class List extends Component {
         //     index: i
         // })
     
-        window.location.pathname = '/details/' + i;
+        this.props.history.push('/details/' + i);
         // this.showDetails();
 
     }
@@ -69,7 +69,7 @@ class List extends Component {
     }
 
     render() {
-        // console.log('props', this.props)
+        console.log('props', this.props)
         let todoList = this.props.todoList;
         const myList = () => {
             if (!this.props.todoList) {
@@ -96,9 +96,8 @@ class List extends Component {
 
 function mapStateToProps(state) {
     return {
-        // editItem: state.editItem,
         todoList: state.todoList,
-        // index: state.index
+
     }
 }
 
