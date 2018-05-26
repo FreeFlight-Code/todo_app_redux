@@ -19,12 +19,6 @@ export default class api {
         })
     }
 
-    // static read() {
-    //     return new Promise((resolve)=>{
-    //         resolve();
-    //     })
-    // }
-
     static update(obj) {
         return new Promise((resolve)=>{
             // do some work
@@ -40,7 +34,3 @@ export default class api {
         })
     }
 }
-
-// Api.delete(id)
-//     .then((data)=> {})
-//     .catch((err) {});

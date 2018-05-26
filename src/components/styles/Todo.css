@@ -1,7 +1,7 @@
 #Fullpage{
     background-image: url('https://thumbs.dreamstime.com/b/office-desktop-keyboard-mouse-notebook-pen-markers-pencil-pins-post-notes-view-above-38937661.jpg');
     background-size: cover;
-    /* height: 100vh; */
+    height: 100vh;
     /* overflow: hidden; */
     background-attachment: fixed;
     padding: 10vh;
