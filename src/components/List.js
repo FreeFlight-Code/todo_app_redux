@@ -39,17 +39,7 @@ class List extends Component {
     }
 
     handleDblClick(i) {
-        // this.props.dispatch({
-        //     type: 'SHOW_EDIT_ITEM',
-        //     payload: true
-        // })
-        // this.setState({
-        //     index: i
-        // })
-    
         this.props.history.push('/details/' + i);
-        // this.showDetails();
-
     }
 
     removeItem(i) {
