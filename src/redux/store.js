@@ -17,35 +17,10 @@ const FETCH_TODO = 'FETCH_TODO';
 
 
 function reducer(state, action) {
+  let newState = Object.assign({}, ...state);
   let newTodoList = [...state.todoList]
 
   switch (action.type) {
-
-    case FETCH_TODO: {
-      newTodoList = action.payload;
-      return {
-        todoList: newTodoList
-      };
-    }
-
-    case SHOW_EDIT_ITEM: {
-
-      return {
-        todoList: newTodoList,
-        editItem: action.payload,
-        index: state.index
-      }
-    }
-
-    case SET_INDEX: {
-      let index = action.payload;
-      return {
-        todoList: newTodoList,
-        index: index,
-        editItem: state.editItem
-      }
-    }
-
     case UPDATE_ITEM: {
       //send index, title, description
       console.log(action)
@@ -72,7 +47,7 @@ function reducer(state, action) {
         title: action.title,
         completed: action.completed
       };
-      newTodoList = [...state.todoList, newItem];
+      newTodoList.unshift(newItem);
 
       return {
         todoList: newTodoList,
@@ -107,15 +82,43 @@ function reducer(state, action) {
       }
     }
 
-    default:
-      return state;
+    case FETCH_TODO: {
+      newTodoList = action.payload;
+      return {
+        todoList: newTodoList
+      };
+    }
 
+    case SHOW_EDIT_ITEM: {
+
+      return {
+        todoList: newTodoList,
+        editItem: action.payload,
+        index: state.index
+      }
+    }
+
+    case SET_INDEX: {
+      let index = action.payload;
+      return {
+        todoList: newTodoList,
+        index: index,
+        editItem: state.editItem
+      }
+    }
+    default: return state;
   }
+}
+
+function aaaa (){
+  console.log(initialState, 'initialstate')
+  return initialState;
+
 }
 
 export default createStore(
   reducer, 
-  initialState, 
+  aaaa(), 
   applyMiddleware(
     loggerMiddleware,
     confirmationMiddleware,
