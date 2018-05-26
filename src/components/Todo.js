@@ -8,7 +8,7 @@ import api from './api.js';
 
 import "./styles/Todo.css";
 
-export class Todo extends Component {
+class Todo extends Component {
 
 getList(){
 	this.props.dispatch({
@@ -20,16 +20,10 @@ getList(){
 		// console.log(this.props, 'todo.js props')
 		return(
 			<div id="todoContainer">
-				{/* <h1>TODO LIST</h1> */}
 				<img alt='logo icon' src={icon}></img>
 				{this.props.editItem ? < EditItem /> : <div></div>}
 				<AddToList />
 				<button id='retrieveButton' onClick={this.getList.bind(this)} >retrieve api list</button>
-				{/* <div id='linksContainer'>
-					<span className="links">All Tasks</span>
-					<span className="links">View Completed</span>
-					<span className="links">View Incomplete</span>
-				</div> */}
 				<List />
 				<p>Double Click to Edit or see Details...</p>
 			</div>
@@ -47,6 +41,5 @@ function mapStateToProps( state ) {
 
 export default connect( mapStateToProps )( Todo );
 
-// export default connect(  )( Todo );
 
 
