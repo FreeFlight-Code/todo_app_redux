@@ -1,5 +1,6 @@
 {
   "name": "todo_react_assessment",
+  "homepage" : "http://freeflight-code.github.io/todo_app_redux",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
